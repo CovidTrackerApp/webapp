@@ -1,6 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
-const path = require('path');
+const path = require('path')
+const client = require("./db");;
 const app = express();
 
 const PORT = process.env.PORT || 3000;
