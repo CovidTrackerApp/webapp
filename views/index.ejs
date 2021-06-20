@@ -45,15 +45,17 @@
 
 	<div class="col-md-4 col-md-offset-4 form-card">
 		<div>
-			<p>Register Now
-			</p>
+			<h1>Register Now
+			</h1>
 		</div>
 		<div class="form-group">
 			<form id="form1" method="post">
-				<input type="email" name="email" placeholder="E-mail" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"><br/>
 				<input type="text" name="username" placeholder="Username" required="" class="form-control"><br/>
 				<input type="password" name="password" placeholder="Password" required="" class="form-control"><br/>
 				<input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control"><br/>
+				<input type="email" name="email" placeholder="E-mail" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"><br/>
+				<input type="tel" name="ph_no" placeholder="Phone number" required="" class="form-control"><br/>
+
 				<input type="submit" value="Register" class="btn btn-success">
 			</form>
 		</div>
@@ -62,9 +64,9 @@
 			<span id="check"></span>
 		</div>
 		<div>
-			<span>Already Registered! <a href="/login">Login</a></span>
+			<span>Already Registered! <a href="users/login">Login</a></span>
 		</div>
-		<div id="LangTable"><a href="/login" id="aa"></a>
+		<div id="LangTable"><a href="users/login" id="aa"></a>
 		</div>
 	</div>
 </body>

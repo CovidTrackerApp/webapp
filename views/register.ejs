@@ -12,6 +12,38 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="./css/main.css">
 
+	<script type="text/javascript">
+		$(document).ready( () => {
+
+			$( "#form1" ).submit( (event) => {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/users/register',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: (response) => {
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout( () => {
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="You are regestered,You can login now.") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: () => {
+         				}
+         			})
+			});
+		});
+	</script>
+
 </head>
 <body>
     <div class="col-md-4 col-md-offset-4 form-card">
@@ -19,12 +51,23 @@
 			<p>Register Now
 			</p>
 		</div>
+
+		<ul>
+			<% if(typeof errors != "undefined") { %>
+				<% errors.forEach(error => {  %> 
+					<li><%= error.message %></li>
+				<% }) %>
+			<% }  %>
+		</ul>
+
 		<div class="form-group">
-			<form id="form1" method="post">
-				<input type="email" name="email" placeholder="E-mail" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"><br/>
-				<input type="text" name="username" placeholder="Username" required="" class="form-control"><br/>
+			<form id="form1" method="POST">
+				<input type="text" name="uname" placeholder="Username" required="" class="form-control"><br/>
 				<input type="password" name="password" placeholder="Password" required="" class="form-control"><br/>
-				<input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control"><br/>
+				<input type="password" name="re_password" placeholder="Confirm Password" required="" class="form-control"><br/>
+				<input type="email" name="email" placeholder="E-mail" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control"><br/>
+				<input type="tel" name="ph_no" placeholder="Phone number" required="" class="form-control"><br/>
+		
 				<input type="submit" value="Register" class="btn btn-success">
 			</form>
 		</div>
